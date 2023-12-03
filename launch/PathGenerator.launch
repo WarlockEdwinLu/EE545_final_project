@@ -1,7 +1,5 @@
 <launch>
-  <!-- Set the default namespace for the nodes -->
-  <group ns="path_generator">
-
+ 
     <!-- Start the PathGenerator node -->
     <node name="path_generator_node" pkg="assignment6" type="PathGenerator.py" output="screen">
       <param name="plan_topic" type="string" value="/planner_node/car_plan" />
@@ -12,5 +10,4 @@
       <param name="start_file_name" type="string" value="start-1.csv" />
     </node>
 
-  </group>
 </launch>
