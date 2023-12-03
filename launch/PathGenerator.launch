@@ -2,9 +2,6 @@
   <!-- Set the default namespace for the nodes -->
   <group ns="path_generator">
 
-    <!-- Start the map_server node to load and publish the map -->
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find your_package_name)/maps/your_map.yaml" output="screen" />
-
     <!-- Start the PathGenerator node -->
     <node name="path_generator_node" pkg="assignment6" type="PathGenerator.py" output="screen">
       <param name="plan_topic" type="string" value="/planner_node/car_plan" />
