@@ -99,7 +99,10 @@ class PathGenerator:
 
         Path_Generator = PathGenerator(source_topic, target_topic, plan_topic, good_file_name, bad_file_name, start_file_name)
         
+         # Publish markers for visualization
+        rate = rospy.Rate(1)  # Publish markers every 1 second
         while not rospy.is_shutdown():
             Path_Generator.publish_markers()
+            rate.sleep()
         
         rospy.spin()
