@@ -9,7 +9,7 @@ class PathGenerator:
 
     def __init__(source_topic, target_topic, plan_topic, file_name):
 
-        self.plan = None
+        self.plan = []   #initialize the plan as an empty list
         self.next_wpt = 0
 
         self.wpts = self.read_csv(file_name) # 'good_waypoints-1.csv'
@@ -32,16 +32,21 @@ class PathGenerator:
 
     def plan_cb(self, plan):
         self.plan.append(plan)
-        if self.next_wpt < len(self.wpts)
+        if self.next_wpt < len(self.wpts):
             pose = Pose()
-            pose.position.x, pose.position.y = wpts[next_wpt]
+            pose.position.x, pose.position.y = self.wpts[self.next_wpt]
             pose.position.z = 0.0
             pose.orientation = Utils.angle_to_quaternion(0.0)
-            source_pub.publish(pose)
+            self.source_pub.publish(pose)
 
             self.next_wpt += 1
-            pose.position.x, pose.position.y = wpts[next_wpt]
-            target_pub.publish(pose)
+            if self.next_wpt < len(self.wpts):
+                pose = PoseStamped()
+                pose.header.frame_id = "map"
+                pose.pose.position.x, pose.pose.position.y = self.wpts[self.next_wpt]
+                pose.pose.position.z = 0.0
+                pose.pose.orientation = Utils.angle_to_quaternion(0.0)
+                self.target_pub.publish(pose)
 
     
     #start_point = self.read_csv('start-1.csv')[0] # (x,y)
