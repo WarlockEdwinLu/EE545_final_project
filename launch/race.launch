@@ -1,0 +1,7 @@
+<launch>
+
+	<node pkg="assignment5" type="Race.py" name="Race" output="screen">
+        <param name="static_map" type="string" value="static_map" />
+	</node>
+
+</launch>
