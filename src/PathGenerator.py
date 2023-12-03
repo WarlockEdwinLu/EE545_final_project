@@ -62,4 +62,4 @@ class PathGenerator:
         file_name = rospy.get_param("~file_name", 'good_waypoints-1.csv')
 
         Path_Generator = PathGenerator(source_topic, target_topic, plan_topic, file_name)
-    
+        rospy.spin()
